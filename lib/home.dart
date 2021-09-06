@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project/status.dart';
 import 'chat.dart';
-import 'status.dart';
 import 'call.dart';
 
 class Home extends StatelessWidget {
