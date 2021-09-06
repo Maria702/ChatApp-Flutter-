@@ -8,7 +8,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'WhatsAPP',
+      title: 'RiaChat',
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
@@ -62,7 +62,7 @@ class Home extends StatelessWidget {
                   ),
                   Tab(
                     child: Text(
-                      'CALLS',
+                      'USER',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
