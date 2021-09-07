@@ -38,7 +38,7 @@ class Login extends StatelessWidget {
         //   UserData = data;
         //   UserData['provider'] = 'Email';
         // });
-        Navigator.of(context).pushNamed("/home");
+        Navigator.of(context).pushNamed("/home", arguments: data);
 
         print(
             '=========================User is Login...=============================');

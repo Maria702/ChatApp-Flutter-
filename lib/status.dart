@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:project/post.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:image_picker_web/image_picker_web.dart';
+import 'dart:html';
 
 //  home
 class Status extends StatefulWidget {
-  // final String username;
-  // Status({required this.username});
-
   @override
   _StatusState createState() => _StatusState();
 }
@@ -14,15 +14,16 @@ class Status extends StatefulWidget {
 class _StatusState extends State<Status> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-  final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
-      .collection('post')
-      // .orderBy('index', descending: true)
-      // .where('index', isGreaterThan: '3')
-      // .limitToLast(2)
-      .snapshots();
+  final Stream<QuerySnapshot> _usersStream =
+      FirebaseFirestore.instance.collection('post').snapshots();
 
   @override
   Widget build(BuildContext context) {
+    void pickerImage() async {
+      final ImagePicker _picker = ImagePicker();
+      final image = await _picker.pickImage(source: ImageSource.gallery);
+    }
+
     print("data is runing/////");
     return Scaffold(
       body: Container(
@@ -50,6 +51,10 @@ class _StatusState extends State<Status> {
                 ),
               ),
             ),
+            ElevatedButton(
+              onPressed: pickerImage,
+              child: Text("Upload an Image"),
+            ),
             Expanded(
               child: Container(
                 margin: const EdgeInsets.only(top: 20),
@@ -58,6 +63,7 @@ class _StatusState extends State<Status> {
                   builder: (BuildContext context,
                       AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.hasError) {
+                      print(snapshot.error);
                       return Text('Something went wrong');
                     }
 
