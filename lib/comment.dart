@@ -9,12 +9,30 @@ class Comment extends StatelessWidget {
   Widget build(BuildContext context) {
     print(data);
     return Container(
-      decoration:
-          BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
-      padding: EdgeInsets.all(10),
       child: Column(
         children: [
-          Text(data["title"]),
+          Container(
+            width: 300,
+            height: 150,
+            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: Colors.indigo.shade100,
+                width: 5.0,
+              ),
+            ),
+            child: SingleChildScrollView(
+              child: Text(
+                data["title"],
+                style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

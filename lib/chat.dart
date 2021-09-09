@@ -59,21 +59,32 @@ class _StatusState extends State<Chat> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              child: TextFormField(
-                controller: titleController,
-                decoration: InputDecoration(
-                  hintText: "Type a message",
-                  contentPadding: EdgeInsets.all(8),
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.all(00),
-                    child: Icon(Icons.email),
+              child: SingleChildScrollView(
+                child: TextFormField(
+                  controller: titleController,
+                  decoration: InputDecoration(
+                    hintText: "Type a message",
+                    contentPadding: EdgeInsets.all(8),
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.only(right: 15),
+                      child: ElevatedButton.icon(
+                        onPressed: submit,
+                        icon: Icon(
+                          Icons.send,
+                          color: Colors.pink,
+                          size: 20.0,
+                        ),
+                        label: Text('Send'),
+                        style: ElevatedButton.styleFrom(
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(20.0),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: submit,
-              child: Text("Text"),
             ),
             Expanded(
               child: Container(
